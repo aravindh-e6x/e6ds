@@ -1,0 +1,86 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction" />
+
+# E6Data Design System
+
+Welcome to the E6Data Design System documentation.
+
+## Overview
+
+This design system provides a consistent set of React components and design tokens
+used across E6Data applications (Console and Product).
+
+## Key Features
+
+- **Consistent Design Tokens**: Shared color palette, typography, and spacing
+- **Radix UI Foundation**: Accessible, unstyled primitives
+- **Tailwind CSS**: Utility-first styling approach
+- **Dark Mode Support**: Full dark mode via CSS custom properties
+- **Sharp Aesthetic**: Zero border radius for a modern, distinctive look
+
+## Brand Colors
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Light Mode</th>
+      <th>Usage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>--e6-green</code></td>
+      <td><code>rgb(73 245 159)</code></td>
+      <td>Primary CTA</td>
+    </tr>
+    <tr>
+      <td><code>--e6-purple</code></td>
+      <td><code>rgb(136 0 255)</code></td>
+      <td>Links</td>
+    </tr>
+    <tr>
+      <td><code>--e6-cream</code></td>
+      <td><code>rgb(255 253 250)</code></td>
+      <td>Background</td>
+    </tr>
+    <tr>
+      <td><code>--e6-dark</code></td>
+      <td><code>rgb(51 50 46)</code></td>
+      <td>Text</td>
+    </tr>
+    <tr>
+      <td><code>--e6-beige</code></td>
+      <td><code>rgb(229 223 207)</code></td>
+      <td>Secondary</td>
+    </tr>
+    <tr>
+      <td><code>--e6-gray</code></td>
+      <td><code>rgb(153 148 138)</code></td>
+      <td>Muted</td>
+    </tr>
+  </tbody>
+</table>
+
+## Getting Started
+
+```tsx
+import { Button, Card } from "@e6data/design-system";
+import "@e6data/design-system/styles";
+
+function App() {
+  return (
+    <Card>
+      <Button>Get Started</Button>
+    </Card>
+  );
+}
+```
+
+## Component Categories
+
+- **Primitives**: Button, Card, Input, Select, Dialog, etc.
+- **Forms**: FormField, Checkbox, RadioGroup, Switch, etc.
+- **Layout**: Sidebar, TopBar, MainContent
+- **Feedback**: Toast, Alert, Progress, ConfirmDialog

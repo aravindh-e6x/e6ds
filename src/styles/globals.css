@@ -1,0 +1,50 @@
+/**
+ * E6Data Design System - Global Styles
+ *
+ * Import this in your app to get base styles and design tokens.
+ * This file imports Tailwind and the design tokens.
+ */
+
+@import "tailwindcss";
+@import "./tokens.css";
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Scrollbar styling */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: Inter, Generalsans, Arial, sans-serif;
+  }
+
+  a,
+  button,
+  [role="button"] {
+    cursor: pointer !important;
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+}
+
+@layer components {
+  /* Primary button style - green with black border */
+  .btn-primary,
+  button.bg-primary,
+  a.bg-primary {
+    @apply border border-foreground;
+  }
+}

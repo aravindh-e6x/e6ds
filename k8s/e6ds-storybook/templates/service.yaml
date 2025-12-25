@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "e6ds-storybook.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "e6ds-storybook.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "e6ds-storybook.selectorLabels" . | nindent 4 }}

@@ -1,0 +1,6 @@
+apiVersion: v2
+name: e6ds-storybook
+description: Helm chart for E6Data Design System Storybook
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
