@@ -264,3 +264,21 @@ export type { CommandPaletteProps, UseCommandPaletteOptions } from "./command-pa
 // Benchmark Chart
 export { BenchmarkChart } from "./benchmark-chart";
 export type { BenchmarkChartProps, BenchmarkItem } from "./benchmark-chart";
+
+// Searchable Select
+export { SearchableSelect } from "./searchable-select";
+export type {
+  SearchableSelectOption,
+  SearchableSelectProps,
+} from "./searchable-select";
+
+// Searchable Multi Select
+export { SearchableMultiSelect } from "./searchable-multi-select";
+export type {
+  SearchableMultiSelectOption,
+  SearchableMultiSelectProps,
+} from "./searchable-multi-select";
+
+// Tag Input
+export { TagInput } from "./tag-input";
+export type { TagInputProps } from "./tag-input";
