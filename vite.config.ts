@@ -46,7 +46,7 @@ export default defineConfig({
         },
         assetFileNames: (assetInfo) => {
           if (assetInfo.name === "style.css") {
-            return "styles/index.css";
+            return "e6ds.css";
           }
           return assetInfo.name || "assets/[name][extname]";
         },

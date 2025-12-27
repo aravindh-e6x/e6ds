@@ -1,5 +1,5 @@
 {
-  "name": "laminar-ui",
+  "name": "e6ds",
   "version": "0.1.0",
   "description": "E6Data Design System - Shared React components and design tokens",
   "type": "module",
@@ -12,8 +12,8 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./styles": "./dist/laminar-ui.css",
-    "./dist/laminar-ui.css": "./dist/laminar-ui.css",
+    "./styles": "./dist/e6ds.css",
+    "./dist/e6ds.css": "./dist/e6ds.css",
     "./tailwind-preset": {
       "types": "./dist/tailwind-preset.d.ts",
       "import": "./dist/tailwind-preset.js",
@@ -30,8 +30,12 @@
     "dev": "vite build --watch",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
@@ -78,15 +82,20 @@
     "@storybook/react": "8.6.14",
     "@storybook/react-vite": "8.6.14",
     "@tailwindcss/postcss": "^4.1.18",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
     "@vitejs/plugin-react": "^4.5.0",
+    "@vitest/coverage-v8": "^4.0.16",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.0.0",
     "eslint-plugin-react-hooks": "^5.0.0",
+    "jsdom": "^27.3.0",
     "postcss": "^8.5.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -95,7 +104,8 @@
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.7.0",
     "vite": "^6.0.0",
-    "vite-plugin-dts": "^4.5.0"
+    "vite-plugin-dts": "^4.5.0",
+    "vitest": "^4.0.16"
   },
   "repository": {
     "type": "git",

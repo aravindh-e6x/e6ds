@@ -1,11 +1,11 @@
-# @e6data/design-system
+# e6ds
 
 E6Data Design System - Shared React components and design tokens for building consistent UIs.
 
 ## Installation
 
 ```bash
-npm install @e6data/design-system
+npm install e6ds
 ```
 
 ## Setup
@@ -15,7 +15,7 @@ npm install @e6data/design-system
 In your app's global CSS or layout file:
 
 ```tsx
-import "@e6data/design-system/styles";
+import "e6ds/styles";
 ```
 
 ### 2. Configure Tailwind (optional)
@@ -24,14 +24,14 @@ If you want to use the design tokens in your own Tailwind classes, extend your c
 
 ```ts
 // tailwind.config.ts
-import { e6Preset } from "@e6data/design-system/tailwind-preset";
+import { e6Preset } from "e6ds/tailwind-preset";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
   presets: [e6Preset],
   content: [
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/@e6data/design-system/dist/**/*.js",
+    "./node_modules/e6ds/dist/**/*.js",
   ],
 };
 
@@ -52,8 +52,8 @@ import {
   MetricCard,
   DataTable,
   useToast,
-} from "@e6data/design-system";
-import "@e6data/design-system/styles";
+} from "e6ds";
+import "e6ds/styles";
 
 function Dashboard() {
   return (

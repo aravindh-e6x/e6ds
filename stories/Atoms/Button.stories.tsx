@@ -6,16 +6,62 @@ const meta: Meta<typeof Button> = {
   component: Button,
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        component: `
+A versatile button component with multiple variants and sizes.
+
+## Installation
+
+\`\`\`bash
+npm install e6ds
+\`\`\`
+
+## Usage
+
+\`\`\`tsx
+import { Button } from "e6ds";
+
+function MyComponent() {
+  return (
+    <Button variant="default" size="default" onClick={() => console.log("clicked")}>
+      Click me
+    </Button>
+  );
+}
+\`\`\`
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`variant\` | \`"default" \\| "destructive" \\| "outline" \\| "secondary" \\| "ghost" \\| "link"\` | \`"default"\` | Visual style variant |
+| \`size\` | \`"default" \\| "sm" \\| "lg" \\| "icon"\` | \`"default"\` | Button size |
+| \`disabled\` | \`boolean\` | \`false\` | Disable the button |
+| \`asChild\` | \`boolean\` | \`false\` | Merge props onto child element |
+        `,
+      },
+    },
   },
   tags: ["autodocs"],
   argTypes: {
     variant: {
       control: "select",
       options: ["default", "destructive", "outline", "secondary", "ghost", "link"],
+      description: "The visual style variant of the button",
     },
     size: {
       control: "select",
       options: ["default", "sm", "lg", "icon"],
+      description: "The size of the button",
+    },
+    disabled: {
+      control: "boolean",
+      description: "Whether the button is disabled",
+    },
+    onClick: {
+      action: "clicked",
+      description: "Click handler",
     },
   },
 };
@@ -23,6 +69,9 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/**
+ * The default button style - use for primary actions.
+ */
 export const Default: Story = {
   args: {
     children: "Button",
