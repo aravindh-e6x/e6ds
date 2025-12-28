@@ -76,6 +76,24 @@ export const Default: Story = {
       </div>
     );
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [value, setValue] = useState<string>("");
+
+<SearchableSelect
+  options={[
+    { value: "us", label: "United States" },
+    { value: "uk", label: "United Kingdom" },
+    { value: "ca", label: "Canada" },
+  ]}
+  value={value}
+  onChange={setValue}
+  placeholder="Select country..."
+/>`,
+      },
+    },
+  },
 };
 
 export const WithPreselectedValue: Story = {
@@ -91,6 +109,20 @@ export const WithPreselectedValue: Story = {
         />
       </div>
     );
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [value, setValue] = useState<string>("us");
+
+<SearchableSelect
+  options={countries}
+  value={value}
+  onChange={setValue}
+  placeholder="Select country..."
+/>`,
+      },
+    },
   },
 };
 
@@ -109,6 +141,21 @@ export const LongLabels: Story = {
       </div>
     );
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [value, setValue] = useState<string>("");
+
+<SearchableSelect
+  options={timezones}
+  value={value}
+  onChange={setValue}
+  placeholder="Select timezone..."
+  searchPlaceholder="Search timezones..."
+/>`,
+      },
+    },
+  },
 };
 
 export const CustomPlaceholders: Story = {
@@ -126,19 +173,43 @@ export const CustomPlaceholders: Story = {
       </div>
     );
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [value, setValue] = useState<string>("");
+
+<SearchableSelect
+  options={databases}
+  value={value}
+  onChange={setValue}
+  placeholder="Choose a database..."
+  searchPlaceholder="Type to filter..."
+/>`,
+      },
+    },
+  },
 };
 
 export const Disabled: Story = {
-  render: () => (
-    <div className="w-72">
-      <SearchableSelect
-        options={countries}
-        value="us"
-        placeholder="Select country..."
-        disabled
-      />
-    </div>
-  ),
+  args: {
+    options: countries,
+    value: "us",
+    placeholder: "Select country...",
+    disabled: true,
+    className: "w-72",
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `<SearchableSelect
+  options={countries}
+  value="us"
+  placeholder="Select country..."
+  disabled
+/>`,
+      },
+    },
+  },
 };
 
 export const InForm: Story = {
@@ -184,20 +255,33 @@ export const InForm: Story = {
       </div>
     );
   },
-};
+  parameters: {
+    docs: {
+      source: {
+        code: `const [country, setCountry] = useState<string>("");
+const [timezone, setTimezone] = useState<string>("");
 
-export const EmptyOptions: Story = {
-  render: () => {
-    const [value, setValue] = React.useState<string>("");
-    return (
-      <div className="w-72">
-        <SearchableSelect
-          options={[]}
-          value={value}
-          onChange={setValue}
-          placeholder="No options available..."
-        />
-      </div>
-    );
+<div className="space-y-4">
+  <div className="space-y-2">
+    <label className="text-sm font-medium">Country</label>
+    <SearchableSelect
+      options={countries}
+      value={country}
+      onChange={setCountry}
+      placeholder="Select country..."
+    />
+  </div>
+  <div className="space-y-2">
+    <label className="text-sm font-medium">Timezone</label>
+    <SearchableSelect
+      options={timezones}
+      value={timezone}
+      onChange={setTimezone}
+      placeholder="Select timezone..."
+    />
+  </div>
+</div>`,
+      },
+    },
   },
 };

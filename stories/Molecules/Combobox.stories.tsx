@@ -104,6 +104,24 @@ export const Default: Story = {
       </div>
     );
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [value, setValue] = useState<string>("");
+
+<Combobox
+  options={[
+    { value: "react", label: "React" },
+    { value: "vue", label: "Vue" },
+    { value: "angular", label: "Angular" },
+  ]}
+  value={value}
+  onValueChange={setValue}
+  placeholder="Select framework..."
+/>`,
+      },
+    },
+  },
 };
 
 export const WithIcons: Story = {
@@ -119,6 +137,25 @@ export const WithIcons: Story = {
         />
       </div>
     );
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [value, setValue] = useState<string>("");
+
+const options = [
+  { value: "postgres", label: "PostgreSQL", icon: <Database />, description: "Advanced open-source database" },
+  { value: "mysql", label: "MySQL", icon: <Database />, description: "Popular relational database" },
+];
+
+<Combobox
+  options={options}
+  value={value}
+  onValueChange={setValue}
+  placeholder="Select database..."
+/>`,
+      },
+    },
   },
 };
 
@@ -140,6 +177,21 @@ export const Multiple: Story = {
       </div>
     );
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [values, setValues] = useState<string[]>([]);
+
+<Combobox
+  options={frameworks}
+  value={values}
+  onValueChange={setValues}
+  placeholder="Select frameworks..."
+  multiple
+/>`,
+      },
+    },
+  },
 };
 
 export const MultipleWithPreselected: Story = {
@@ -156,6 +208,21 @@ export const MultipleWithPreselected: Story = {
         />
       </div>
     );
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [values, setValues] = useState<string[]>(["react", "vue"]);
+
+<Combobox
+  options={frameworks}
+  value={values}
+  onValueChange={setValues}
+  placeholder="Select frameworks..."
+  multiple
+/>`,
+      },
+    },
   },
 };
 
@@ -174,6 +241,21 @@ export const Clearable: Story = {
       </div>
     );
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [value, setValue] = useState<string>("react");
+
+<Combobox
+  options={frameworks}
+  value={value}
+  onValueChange={setValue}
+  placeholder="Select framework..."
+  clearable
+/>`,
+      },
+    },
+  },
 };
 
 export const Disabled: Story = {
@@ -187,6 +269,18 @@ export const Disabled: Story = {
       />
     </div>
   ),
+  parameters: {
+    docs: {
+      source: {
+        code: `<Combobox
+  options={frameworks}
+  value="react"
+  placeholder="Select framework..."
+  disabled
+/>`,
+      },
+    },
+  },
 };
 
 export const WithDescriptions: Story = {
@@ -204,6 +298,21 @@ export const WithDescriptions: Story = {
       </div>
     );
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [value, setValue] = useState<string>("");
+
+<Combobox
+  options={databases}
+  value={value}
+  onValueChange={setValue}
+  placeholder="Choose a database..."
+  searchPlaceholder="Search databases..."
+/>`,
+      },
+    },
+  },
 };
 
 export const LongList: Story = {
@@ -220,6 +329,21 @@ export const LongList: Story = {
         />
       </div>
     );
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [value, setValue] = useState<string>("");
+
+<Combobox
+  options={countries}
+  value={value}
+  onValueChange={setValue}
+  placeholder="Select country..."
+  searchPlaceholder="Search countries..."
+/>`,
+      },
+    },
   },
 };
 
@@ -240,6 +364,21 @@ export const CustomEmptyText: Story = {
         />
       </div>
     );
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [value, setValue] = useState<string>("");
+
+<Combobox
+  options={options}
+  value={value}
+  onValueChange={setValue}
+  placeholder="Select..."
+  emptyText="No matching options. Try a different search."
+/>`,
+      },
+    },
   },
 };
 
@@ -276,5 +415,36 @@ export const InForm: Story = {
         </div>
       </div>
     );
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [database, setDatabase] = useState<string>("");
+const [regions, setRegions] = useState<string[]>([]);
+
+<div className="space-y-4">
+  <div className="space-y-2">
+    <label>Database</label>
+    <Combobox
+      options={databases}
+      value={database}
+      onValueChange={setDatabase}
+      placeholder="Select database..."
+      clearable
+    />
+  </div>
+  <div className="space-y-2">
+    <label>Regions</label>
+    <Combobox
+      options={countries}
+      value={regions}
+      onValueChange={setRegions}
+      placeholder="Select regions..."
+      multiple
+    />
+  </div>
+</div>`,
+      },
+    },
   },
 };

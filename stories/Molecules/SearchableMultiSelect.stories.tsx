@@ -78,6 +78,24 @@ export const Default: Story = {
       </div>
     );
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [values, setValues] = useState<string[]>([]);
+
+<SearchableMultiSelect
+  options={[
+    { value: "react", label: "React" },
+    { value: "vue", label: "Vue" },
+    { value: "angular", label: "Angular" },
+  ]}
+  value={values}
+  onChange={setValues}
+  placeholder="Select frameworks..."
+/>`,
+      },
+    },
+  },
 };
 
 export const WithPreselected: Story = {
@@ -93,6 +111,20 @@ export const WithPreselected: Story = {
         />
       </div>
     );
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [values, setValues] = useState<string[]>(["react", "typescript"]);
+
+<SearchableMultiSelect
+  options={technologies}
+  value={values}
+  onChange={setValues}
+  placeholder="Select technologies..."
+/>`,
+      },
+    },
   },
 };
 
@@ -116,6 +148,22 @@ export const ManySelections: Story = {
       </div>
     );
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [values, setValues] = useState<string[]>([
+  "react", "vue", "angular", "svelte", "nextjs"
+]);
+
+<SearchableMultiSelect
+  options={frameworks}
+  value={values}
+  onChange={setValues}
+  placeholder="Select frameworks..."
+/>`,
+      },
+    },
+  },
 };
 
 export const LongLabels: Story = {
@@ -133,26 +181,50 @@ export const LongLabels: Story = {
       </div>
     );
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [values, setValues] = useState<string[]>([]);
+
+<SearchableMultiSelect
+  options={skills}
+  value={values}
+  onChange={setValues}
+  placeholder="Select skills..."
+  searchPlaceholder="Search skills..."
+/>`,
+      },
+    },
+  },
 };
 
 export const Disabled: Story = {
-  render: () => (
-    <div className="w-80">
-      <SearchableMultiSelect
-        options={frameworks}
-        value={["react", "vue"]}
-        placeholder="Select frameworks..."
-        disabled
-      />
-    </div>
-  ),
+  args: {
+    options: frameworks,
+    value: ["react", "vue"],
+    placeholder: "Select frameworks...",
+    disabled: true,
+    className: "w-80",
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `<SearchableMultiSelect
+  options={frameworks}
+  value={["react", "vue"]}
+  placeholder="Select frameworks..."
+  disabled
+/>`,
+      },
+    },
+  },
 };
 
 export const InForm: Story = {
   render: () => {
-    const [languages, setLanguages] = React.useState<string[]>([]);
-    const [frameworks, setFrameworks] = React.useState<string[]>([]);
-    const [skills, setSkills] = React.useState<string[]>([]);
+    const [selectedLanguages, setSelectedLanguages] = React.useState<string[]>([]);
+    const [selectedFrameworks, setSelectedFrameworks] = React.useState<string[]>([]);
+    const [selectedSkills, setSelectedSkills] = React.useState<string[]>([]);
 
     const languageOptions: SearchableMultiSelectOption[] = [
       { value: "javascript", label: "JavaScript" },
@@ -183,8 +255,8 @@ export const InForm: Story = {
           <label className="text-sm font-medium">Languages</label>
           <SearchableMultiSelect
             options={languageOptions}
-            value={languages}
-            onChange={setLanguages}
+            value={selectedLanguages}
+            onChange={setSelectedLanguages}
             placeholder="Select languages..."
           />
         </div>
@@ -192,8 +264,8 @@ export const InForm: Story = {
           <label className="text-sm font-medium">Frameworks</label>
           <SearchableMultiSelect
             options={frameworkOptions}
-            value={frameworks}
-            onChange={setFrameworks}
+            value={selectedFrameworks}
+            onChange={setSelectedFrameworks}
             placeholder="Select frameworks..."
           />
         </div>
@@ -201,18 +273,47 @@ export const InForm: Story = {
           <label className="text-sm font-medium">Skills</label>
           <SearchableMultiSelect
             options={skillOptions}
-            value={skills}
-            onChange={setSkills}
+            value={selectedSkills}
+            onChange={setSelectedSkills}
             placeholder="Select skills..."
           />
         </div>
         <div className="pt-2 text-sm text-muted-foreground border-t space-y-1">
-          <p>Languages: {languages.join(", ") || "None"}</p>
-          <p>Frameworks: {frameworks.join(", ") || "None"}</p>
-          <p>Skills: {skills.join(", ") || "None"}</p>
+          <p>Languages: {selectedLanguages.join(", ") || "None"}</p>
+          <p>Frameworks: {selectedFrameworks.join(", ") || "None"}</p>
+          <p>Skills: {selectedSkills.join(", ") || "None"}</p>
         </div>
       </div>
     );
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [languages, setLanguages] = useState<string[]>([]);
+const [frameworks, setFrameworks] = useState<string[]>([]);
+
+<div className="space-y-4">
+  <div className="space-y-2">
+    <label>Languages</label>
+    <SearchableMultiSelect
+      options={languageOptions}
+      value={languages}
+      onChange={setLanguages}
+      placeholder="Select languages..."
+    />
+  </div>
+  <div className="space-y-2">
+    <label>Frameworks</label>
+    <SearchableMultiSelect
+      options={frameworkOptions}
+      value={frameworks}
+      onChange={setFrameworks}
+      placeholder="Select frameworks..."
+    />
+  </div>
+</div>`,
+      },
+    },
   },
 };
 
@@ -240,5 +341,25 @@ export const FilterExample: Story = {
         />
       </div>
     );
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [selectedStatuses, setSelectedStatuses] = useState<string[]>([]);
+
+const statusOptions = [
+  { value: "pending", label: "Pending" },
+  { value: "in_progress", label: "In Progress" },
+  { value: "completed", label: "Completed" },
+];
+
+<SearchableMultiSelect
+  options={statusOptions}
+  value={selectedStatuses}
+  onChange={setSelectedStatuses}
+  placeholder="All statuses"
+/>`,
+      },
+    },
   },
 };

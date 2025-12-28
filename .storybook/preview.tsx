@@ -28,6 +28,11 @@ const ThemeDecorator = (Story: React.ComponentType, context: { globals: { backgr
 
 const preview: Preview = {
   parameters: {
+    docs: {
+      source: {
+        type: "code",
+      },
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,

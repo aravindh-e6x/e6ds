@@ -80,6 +80,20 @@ export const Default: Story = {
       </div>
     );
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [tags, setTags] = useState<string[]>([]);
+
+<TagInput
+  options={["bug", "feature", "enhancement", "documentation"]}
+  value={tags}
+  onChange={setTags}
+  placeholder="Add labels..."
+/>`,
+      },
+    },
+  },
 };
 
 export const WithPreselected: Story = {
@@ -95,6 +109,20 @@ export const WithPreselected: Story = {
         />
       </div>
     );
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [tags, setTags] = useState<string[]>(["bug", "priority-high"]);
+
+<TagInput
+  options={labelSuggestions}
+  value={tags}
+  onChange={setTags}
+  placeholder="Add labels..."
+/>`,
+      },
+    },
   },
 };
 
@@ -116,6 +144,21 @@ export const AllowCreateNew: Story = {
       </div>
     );
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [tags, setTags] = useState<string[]>([]);
+
+<TagInput
+  options={["react", "typescript", "nodejs"]}
+  value={tags}
+  onChange={setTags}
+  placeholder="Add technologies..."
+  allowCreate={true}
+/>`,
+      },
+    },
+  },
 };
 
 export const DisallowCreate: Story = {
@@ -135,6 +178,21 @@ export const DisallowCreate: Story = {
         />
       </div>
     );
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [tags, setTags] = useState<string[]>([]);
+
+<TagInput
+  options={["frontend", "backend", "devops"]}
+  value={tags}
+  onChange={setTags}
+  placeholder="Select categories..."
+  allowCreate={false}
+/>`,
+      },
+    },
   },
 };
 
@@ -158,19 +216,44 @@ export const ManyTags: Story = {
       </div>
     );
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [tags, setTags] = useState<string[]>([
+  "react", "typescript", "nodejs", "docker", "aws"
+]);
+
+<TagInput
+  options={techTags}
+  value={tags}
+  onChange={setTags}
+  placeholder="Add technologies..."
+/>`,
+      },
+    },
+  },
 };
 
 export const Disabled: Story = {
-  render: () => (
-    <div className="w-80">
-      <TagInput
-        options={labelSuggestions}
-        value={["bug", "feature"]}
-        placeholder="Add labels..."
-        disabled
-      />
-    </div>
-  ),
+  args: {
+    options: labelSuggestions,
+    value: ["bug", "feature"],
+    placeholder: "Add labels...",
+    disabled: true,
+    className: "w-80",
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `<TagInput
+  options={labelSuggestions}
+  value={["bug", "feature"]}
+  placeholder="Add labels..."
+  disabled
+/>`,
+      },
+    },
+  },
 };
 
 export const NoSuggestions: Story = {
@@ -190,6 +273,21 @@ export const NoSuggestions: Story = {
         />
       </div>
     );
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [tags, setTags] = useState<string[]>([]);
+
+<TagInput
+  options={[]}
+  value={tags}
+  onChange={setTags}
+  placeholder="Type and press Enter..."
+  allowCreate={true}
+/>`,
+      },
+    },
   },
 };
 
@@ -218,49 +316,23 @@ export const IssueLabeling: Story = {
       </div>
     );
   },
-};
+  parameters: {
+    docs: {
+      source: {
+        code: `const [labels, setLabels] = useState<string[]>(["bug"]);
 
-export const BlogPostTags: Story = {
-  render: () => {
-    const [tags, setTags] = React.useState<string[]>([]);
-    const blogTags = [
-      "tutorial",
-      "guide",
-      "tips",
-      "news",
-      "announcement",
-      "case-study",
-      "interview",
-      "opinion",
-      "review",
-      "comparison",
-    ];
-
-    return (
-      <div className="w-96 p-4 border rounded-md space-y-4">
-        <div>
-          <h3 className="font-medium">New Blog Post</h3>
-          <input
-            type="text"
-            placeholder="Post title..."
-            className="w-full mt-2 px-3 py-2 border rounded-md text-sm"
-          />
-        </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Tags</label>
-          <TagInput
-            options={blogTags}
-            value={tags}
-            onChange={setTags}
-            placeholder="Add tags for SEO..."
-            allowCreate={true}
-          />
-          <p className="text-xs text-muted-foreground">
-            Add relevant tags to help readers find your post
-          </p>
-        </div>
-      </div>
-    );
+<div className="space-y-2">
+  <label>Labels</label>
+  <TagInput
+    options={["bug", "feature", "enhancement", "help-wanted"]}
+    value={labels}
+    onChange={setLabels}
+    placeholder="Add labels..."
+    allowCreate={true}
+  />
+</div>`,
+      },
+    },
   },
 };
 
@@ -283,5 +355,25 @@ export const KeyboardNavigation: Story = {
         </div>
       </div>
     );
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `const [tags, setTags] = useState<string[]>(["react"]);
+
+<TagInput
+  options={techTags}
+  value={tags}
+  onChange={setTags}
+  placeholder="Add technologies..."
+/>
+
+// Keyboard shortcuts:
+// ↑↓ - Navigate suggestions
+// Enter - Select or create tag
+// Backspace - Remove last tag (when empty)
+// Esc - Close suggestions`,
+      },
+    },
   },
 };

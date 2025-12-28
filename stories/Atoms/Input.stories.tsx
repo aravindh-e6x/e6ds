@@ -26,12 +26,29 @@ export const WithLabel: Story = {
       <Input type="email" id="email" placeholder="Email" />
     </div>
   ),
+  parameters: {
+    docs: {
+      source: {
+        code: `<div className="grid w-full max-w-sm items-center gap-1.5">
+  <Label htmlFor="email">Email</Label>
+  <Input type="email" id="email" placeholder="Email" />
+</div>`,
+      },
+    },
+  },
 };
 
 export const Disabled: Story = {
   args: {
     placeholder: "Disabled input",
     disabled: true,
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `<Input placeholder="Disabled input" disabled />`,
+      },
+    },
   },
 };
 
@@ -56,4 +73,14 @@ export const WithType: Story = {
       </div>
     </div>
   ),
+  parameters: {
+    docs: {
+      source: {
+        code: `<Input type="text" placeholder="Text input" />
+<Input type="password" placeholder="Password" />
+<Input type="number" placeholder="123" />
+<Input type="file" />`,
+      },
+    },
+  },
 };
