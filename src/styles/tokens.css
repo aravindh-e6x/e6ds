@@ -24,6 +24,7 @@
   --e6-cream: 255 253 250;
   --e6-white: 255 255 255;
   --e6-green: 73 245 159;
+  --e6-green-dark: 16 140 80; /* Darker green for text - WCAG AA compliant */
   --e6-purple: 136 0 255;
   --e6-dark: 51 50 46;
   --e6-beige: 229 223 207;
@@ -51,7 +52,7 @@
   --border: rgb(var(--e6-border));
   --input: rgb(var(--e6-border));
   --ring: rgb(var(--e6-green));
-  --link: rgb(var(--e6-purple));
+  --link: rgb(var(--e6-green-dark));
 
   /* Chart colors */
   --chart-1: rgb(var(--e6-green));
@@ -99,7 +100,7 @@
   --border: rgb(60 60 60);
   --input: rgb(60 60 60);
   --ring: rgb(var(--e6-green));
-  --link: rgb(var(--e6-purple));
+  --link: rgb(var(--e6-green)); /* Bright green works well on dark backgrounds */
 
   /* Chart colors - Dark mode */
   --chart-1: rgb(var(--e6-green));
