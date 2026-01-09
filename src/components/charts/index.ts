@@ -23,6 +23,12 @@ export type {
   StackConfig,
 } from "./stacked-bar-chart";
 
+export { LogHistogram } from "./log-histogram";
+export type { LogHistogramDataPoint, LogHistogramProps } from "./log-histogram";
+
+export { Heatmap } from "./heatmap";
+export type { HeatmapCell, HeatmapProps } from "./heatmap";
+
 // Re-export recharts primitives for custom charts
 export {
   ResponsiveContainer,
